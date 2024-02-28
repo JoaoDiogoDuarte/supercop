@@ -1,6 +1,6 @@
 #!/bin/bash
 
-log=run-xwing-libjade.log
+log=run-xwing.log
 
 # run tests (and bench) for dilithium{2,3,5}/{ref,avx2} from pq-crystals
 echo -n "" >$log
