@@ -1,6 +1,6 @@
-fails crypto_kem/xwing/libjade-ref
-fails crypto_kem/xwing/libjade-ref
-fails crypto_kem/xwing/libjade-ref
-fails crypto_kem/xwing/libjade-avx2
-fails crypto_kem/xwing/libjade-avx2
-fails crypto_kem/xwing/libjade-avx2
+ok crypto_kem/xwing/libjade-ref
+ok crypto_kem/xwing/libjade-ref
+ok crypto_kem/xwing/libjade-ref
+ok crypto_kem/xwing/libjade-avx2
+ok crypto_kem/xwing/libjade-avx2
+ok crypto_kem/xwing/libjade-avx2
