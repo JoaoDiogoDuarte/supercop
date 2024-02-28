@@ -1,1 +1,1 @@
-clang -march=native -O3 -fomit-frame-pointer -fwrapv -Qunused-arguments -fPIC -fPIE
+gcc -march=native -mtune=native -O3 -fomit-frame-pointer -fwrapv -fPIC -fPIE

@@ -5,7 +5,7 @@
 #include <lib25519.h>
 // #include <libpqcrystals_kyber768_avx2.h>
 #include <string.h>
-#include <randombytes.h>
+#include "randombytes.h"
 #include "xkem.h"
 #include "params.h"
 #include "fips202.h"
