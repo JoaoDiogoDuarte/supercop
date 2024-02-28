@@ -23,7 +23,7 @@ int crypto_kem_keypair(
 }
 
 
-int crypto_kem_emc(
+int crypto_kem_enc(
   unsigned char *m,
   unsigned char *ss,
   const unsigned char *pk
@@ -33,7 +33,7 @@ int crypto_kem_emc(
 }
 
 
-int crypto_kem_open(
+int crypto_kem_dec(
   unsigned char *ss,
   const unsigned char *m,
   const unsigned char *sk
