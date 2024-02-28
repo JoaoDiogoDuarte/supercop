@@ -4,14 +4,14 @@
 #include <stdlib.h>
 #include <lib25519.h>
 // #include <libpqcrystals_kyber768_ref.h>
-#include <randombytes.h>
-#include "xkem.h"
+#include "randombytes.h"
+#include "kem.h"
 #include "params.h"
 #include "fips202.h"
 #include "randombytes.h"
 
 /*************************************************
- * Name:        crypto_xkem_keypair_derand
+ * Name:        crypto_kem_keypair_derand
  *
  * Description: Generates public and private key for the CCA-secure
  *              X-Wing key encapsulation mechanism
@@ -21,7 +21,7 @@
  *              - const unsigned char *randomness: pointer to input random coins used as seed (of length 3*XWING_SYMBYTES bytes)
  *                                                 to deterministically generate all randomness
  **************************************************/
-int crypto_xkem_keypair_derand(unsigned char *pk,
+int crypto_kem_keypair_derand(unsigned char *pk,
                                 unsigned char *sk,
                                 const unsigned char *randomness)
 {
@@ -36,7 +36,7 @@ int crypto_xkem_keypair_derand(unsigned char *pk,
 }
 
 /*************************************************
- * Name:        crypto_xkem_keypair
+ * Name:        crypto_kem_keypair
  *
  * Description: Generates public and private key for the CCA-secure
  *              X-Wing key encapsulation mechanism
@@ -44,16 +44,16 @@ int crypto_xkem_keypair_derand(unsigned char *pk,
  * Arguments:   - unsigned char *pk:               pointer to output public key (of length XWING_PUBLICKEYBYTES bytes)
  *              - unsigned char *sk:               pointer to output private key (of length XWING_SECRETKEYBYTES bytes)
  **************************************************/
-int crypto_xkem_keypair(unsigned char *pk,
+int crypto_kem_keypair(unsigned char *pk,
                          unsigned char *sk)
 {
   unsigned char buf[3 * DH_BYTES];
   randombytes(buf, 3 * DH_BYTES);
-  return crypto_xkem_keypair_derand(pk, sk, buf);
+  return crypto_kem_keypair_derand(pk, sk, buf);
 }
 
 /*************************************************
- * Name:        crypto_xkem_enc_derand
+ * Name:        crypto_kem_enc_derand
  *
  * Description: Generates cipher text and shared
  *              secret for given public key
@@ -64,7 +64,7 @@ int crypto_xkem_keypair(unsigned char *pk,
  *              - const unsigned char *coins: pointer to input random coins used as seed (of length 2*XWING_SYMBYTES bytes)
  *                                            to deterministically generate all randomness
  **************************************************/
-int crypto_xkem_enc_derand(unsigned char *ct,
+int crypto_kem_enc_derand(unsigned char *ct,
                             unsigned char *ss,
                             const unsigned char *pk,
                             const unsigned char *coins)
@@ -94,7 +94,7 @@ int crypto_xkem_enc_derand(unsigned char *ct,
 }
 
 /*************************************************
- * Name:        crypto_xkem_enc
+ * Name:        crypto_kem_enc
  *
  * Description: Generates cipher text and shared
  *              secret for given public key
@@ -102,18 +102,18 @@ int crypto_xkem_enc_derand(unsigned char *ct,
  * Arguments:   - unsigned char *ct:          pointer to output ciphertext (of length XWING_CIPHERTEXTBYTES bytes)
  *              - unsigned char *ss:          pointer to output decrypted message (of length XWING_SSBYTES bytes)
  **************************************************/
-int crypto_xkem_enc(unsigned char *ct,
+int crypto_kem_enc(unsigned char *ct,
                      unsigned char *ss,
                      const unsigned char *pk)
 {
   unsigned char buf[2 * DH_BYTES];
   randombytes(buf, 2 * DH_BYTES);
 
-  return crypto_xkem_enc_derand(ct, ss, pk, buf);
+  return crypto_kem_enc_derand(ct, ss, pk, buf);
 }
 
 /*************************************************
- * Name:        crypto_xkem_dec
+ * Name:        crypto_kem_dec
  *
  * Description: Generates shared secret for given
  *              cipher text and private key
@@ -122,7 +122,7 @@ int crypto_xkem_enc(unsigned char *ct,
  *              - const unsigned char *ct:  pointer to input ciphertext (of length XWING_CIPHERTEXTKEYBYTES bytes)
  *              - const unsigned char *sk:  pointer to input secret key (of length XWING_SECRETKEYBYTES bytes)
  **************************************************/
-int crypto_xkem_dec(uint8_t *ss,
+int crypto_kem_dec(uint8_t *ss,
                      const uint8_t *ct,
                      const uint8_t *sk)
 {

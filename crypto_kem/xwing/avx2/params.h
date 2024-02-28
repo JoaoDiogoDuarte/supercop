@@ -1,7 +1,8 @@
 #ifndef PARAMS_HA
 #define PARAMS_HA
 
-#define xwing_NAMESPACE(s) xwing_avx2_##s
+#define xwing_NAMESPACE(s) CRYPTO_NAMESPACE(s)
+
 
 #define KYBER_N 256
 #define KYBER_K 3

@@ -2,6 +2,7 @@
 #define API_H
 
 #include <stdint.h>
+#include "params.h"
 
 #define xwing_SECRETKEYBYTES 2464
 #define xwing_PUBLICKEYBYTES 1216
@@ -9,6 +10,11 @@
 #define xwing_KEYPAIRCOINBYTES 96
 #define xwing_ENCCOINBYTES 64
 #define xwing_BYTES 32
+
+#define CRYPTO_PUBLICKEYBYTES xwing_PUBLICKEYBYTES
+#define CRYPTO_SECRETKEYBYTES xwing_SECRETKEYBYTES
+#define CRYPTO_CIPHERTEXTBYTES xwing_CIPHERTEXTBYTES
+#define CRYPTO_BYTES xwing_BYTES
 
 #define xwing_ref_SECRETKEYBYTES xwing_SECRETKEYBYTES
 #define xwing_ref_PUBLICKEYBYTES xwing_PUBLICKEYBYTES

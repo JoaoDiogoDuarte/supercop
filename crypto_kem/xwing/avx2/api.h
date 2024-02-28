@@ -2,6 +2,8 @@
 #define API_HA
 
 #include <stdint.h>
+#include "params.h"
+
 
 #define xwing_SECRETKEYBYTES 2464
 #define xwing_PUBLICKEYBYTES 1216
@@ -16,6 +18,11 @@
 #define xwing_avx2_KEYPAIRCOINBYTES xwing_KEYPAIRCOINBYTES
 #define xwing_avx2_ENCCOINBYTES xwing_ENCCOINBYTES
 #define xwing_avx2_BYTES xwing_BYTES
+
+#define CRYPTO_PUBLICKEYBYTES xwing_PUBLICKEYBYTES
+#define CRYPTO_SECRETKEYBYTES xwing_SECRETKEYBYTES
+#define CRYPTO_CIPHERTEXTBYTES xwing_CIPHERTEXTBYTES
+#define CRYPTO_BYTES xwing_BYTES
 
 int xwing_avx2_keypair_derand(unsigned char *pk, unsigned char *sk, const unsigned char *coins);
 int xwing_avx2_keypair(unsigned char *pk, unsigned char *sk);
