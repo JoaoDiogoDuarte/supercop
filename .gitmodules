@@ -1,0 +1,3 @@
+[submodule "submodules/libjade"]
+	path = submodules/libjade
+	url = https://github.com/JoaoDiogoDuarte/libjade
