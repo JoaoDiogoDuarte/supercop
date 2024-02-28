@@ -1,0 +1,16 @@
+{
+    "files.associations": {
+        "*.sage": "python",
+        "*.jinc": "jasmin",
+        "*.jazz": "jasmin",
+        "stdint.h": "c",
+        "libpqcrystals_kyber768_avx2.h": "c",
+        "randombytes.h": "c",
+        "params.h": "c",
+        "libpqcrystals_kyber768_ref.h": "c",
+        "evp.h": "c",
+        "lib25519.h": "c",
+        "stdio.h": "c",
+        "string.h": "c"
+    }
+}
