@@ -4,7 +4,7 @@
 #include <assert.h>
 
 #include "../params.h"
-#include "../xkem.h"
+#include "../kem.h"
 
 static int testFunctionality()
 {
@@ -23,13 +23,13 @@ static int testFunctionality()
   fclose(urandom);
 
   /* TEST KEYPAIR */
-  crypto_xkem_keypair_derand(pk0, sk0, randomness0);
+  crypto_kem_keypair_derand(pk0, sk0, randomness0);
 
   /* TEST ENCAPSULATION */
-  crypto_xkem_enc_derand(ct0, shk0, pk0, randomness1);
+  crypto_kem_enc_derand(ct0, shk0, pk0, randomness1);
 
   /* TEST DECAPSULATION */
-  crypto_xkem_dec(shk1, ct0, sk0);
+  crypto_kem_dec(shk1, ct0, sk0);
 
   assert(memcmp(shk0, shk1, (long unsigned int)32) == 0);
   return 0;

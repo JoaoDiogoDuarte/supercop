@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <lib25519.h>
-// #include <libpqcrystals_kyber768_avx2.h>
+// #include <libpqcrystals_mlkem768_avx2.h>
 #include <string.h>
 #include "randombytes.h"
 #include "kem.h"
@@ -24,9 +24,9 @@ int crypto_kem_keypair_derand(unsigned char *pk,
                                 unsigned char *sk,
                                 const unsigned char *randomness)
 {
-  pqcrystals_kyber768_avx2_keypair_derand(pk, sk, randomness);
-  pk += KYBER_PUBLICKEYBYTES;
-  sk += KYBER_SECRETKEYBYTES;
+  pqcrystals_mlkem768_avx2_keypair_derand(pk, sk, randomness);
+  pk += MLKEM_PUBLICKEYBYTES;
+  sk += MLKEM_SECRETKEYBYTES;
   randomness += 2 * XWING_SYMBYTES;
   lib25519_nG_montgomery25519(pk, randomness);
   memcpy(sk, randomness, DH_BYTES);
@@ -74,12 +74,12 @@ int crypto_kem_enc_derand(unsigned char *ct,
   memcpy(buffer, XWING_LABEL, 6);
   bufferPointer += 6;
 
-  pqcrystals_kyber768_avx2_enc_derand(ct, bufferPointer, pk, coins);
+  pqcrystals_mlkem768_avx2_enc_derand(ct, bufferPointer, pk, coins);
 
-  pk += KYBER_PUBLICKEYBYTES;
-  ct += KYBER_CIPHERTEXTBYTES;
+  pk += MLKEM_PUBLICKEYBYTES;
+  ct += MLKEM_CIPHERTEXTBYTES;
   coins += DH_BYTES;
-  bufferPointer += KYBER_SSBYTES;
+  bufferPointer += MLKEM_SSBYTES;
 
   lib25519_nG_montgomery25519(ct, coins);
   lib25519_dh(bufferPointer, pk, coins);
@@ -132,11 +132,11 @@ int crypto_kem_dec(uint8_t *ss,
   memcpy(bufferPointer, XWING_LABEL, 6);
   bufferPointer += 6;
 
-  pqcrystals_kyber768_avx2_dec(bufferPointer, ct, sk);
+  pqcrystals_mlkem768_avx2_dec(bufferPointer, ct, sk);
 
-  sk += KYBER_SECRETKEYBYTES;
-  ct += KYBER_CIPHERTEXTBYTES;
-  bufferPointer += KYBER_SSBYTES;
+  sk += MLKEM_SECRETKEYBYTES;
+  ct += MLKEM_CIPHERTEXTBYTES;
+  bufferPointer += MLKEM_SSBYTES;
 
   lib25519_dh(bufferPointer, ct, sk);
   sk += DH_BYTES;

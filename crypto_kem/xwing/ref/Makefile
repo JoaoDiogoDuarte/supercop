@@ -19,10 +19,10 @@ SOURCES =  kem.c fips202.c
 TESTSOURCES = $(SOURCES) test/cpucycles.c test/speed_print.c 
 
 test/test_kem_functionality: $(TESTSOURCES) $(TESTHEADERS) test/test_kem_functionality.c
-	$(CC) $(CFLAGS) -Dkyber_K=3 $(TESTSOURCES) test/test_kem_functionality.c -o $@ -L. -lpqcrystals_kyber768_ref
+	$(CC) $(CFLAGS) -Dkyber_K=3 $(TESTSOURCES) test/test_kem_functionality.c -o $@ -L. -lpqcrystals_mlkem768_ref
 
 test/test_speed: $(TESTSOURCES) $(TESTHEADERS) test/test_speed.c
-	$(CC) $(CFLAGS) -Dkyber_K=3 $(TESTSOURCES) test/test_speed.c -o $@ -L. -lpqcrystals_kyber768_ref
+	$(CC) $(CFLAGS) -Dkyber_K=3 $(TESTSOURCES) test/test_speed.c -o $@ -L. -lpqcrystals_mlkem768_ref
 
 .PHONY: clean
 
